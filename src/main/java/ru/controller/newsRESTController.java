@@ -1,6 +1,5 @@
 package ru.controller;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,9 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.model.news;
 import ru.model.newsDTO;
 import ru.model.newsType;
-/*import ru.service.MainService;*/
 import ru.model.newsTypeDTO;
-import ru.repository.newsTypeRepo;
 import ru.service.newsService;
 import ru.service.newsTypeService;
 
