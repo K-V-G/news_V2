@@ -4,63 +4,63 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.model.newsType;
-import ru.model.newsTypeDTO;
-import ru.service.newsTypeService;
+import ru.model.NewsType;
+import ru.model.NewsTypeDTO;
+import ru.service.NewsTypeService;
 
 import java.util.List;
 
 @RestController
-
+@RequestMapping("")
 public class NewsTypeRESTController {
 
-    newsTypeService service;
+    NewsTypeService service;
 
     @Autowired
-    public NewsTypeRESTController(newsTypeService service) {
+    public NewsTypeRESTController(NewsTypeService service) {
         this.service = service;
     }
 
 
-    @PostMapping("/saveNewsType")
-    public ResponseEntity<newsType> createNewsType(@RequestBody newsType newsType) {
-        service.save(newsType);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    @PostMapping("/save_news_type")
+    public ResponseEntity<NewsTypeDTO> createNewsType(@RequestBody NewsType newsType) {
+        NewsTypeDTO type = new NewsTypeDTO(service.save(newsType));
+        return new ResponseEntity<>(type, HttpStatus.CREATED);
     }
 
-    @GetMapping("/allType")
-    public ResponseEntity<List<newsTypeDTO>> findAllNewsType(){
-        List<newsTypeDTO> list = service.findAll();
+    @GetMapping("/all_type")
+    public ResponseEntity<List<NewsTypeDTO>> findAllNewsType(){
+        List<NewsTypeDTO> list = service.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/getOneType/{typeName}")
-    public ResponseEntity<newsTypeDTO> findOneNewsType(@PathVariable("typeName") String typeName){
-        newsTypeDTO typeDTO = service.findNewsType(typeName);
+    @GetMapping("/news_type/{typeName}")
+    public ResponseEntity<NewsTypeDTO> findOneNewsType(@PathVariable("typeName") String typeName){
+        NewsTypeDTO typeDTO = service.findNewsType(typeName);
         if (typeDTO != null) {
             return new ResponseEntity<>(typeDTO, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/deleteNewsType/{typeName}", method = RequestMethod.DELETE)
-    public ResponseEntity<newsType> deleteNewsType(@PathVariable("typeName") String typeName) {
+    @RequestMapping(value = "/delete_news_type/{typeName}", method = RequestMethod.DELETE)
+    public ResponseEntity<NewsType> deleteNewsType(@PathVariable("typeName") String typeName) {
         service.delete(typeName);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/updateNewsType/{typeName}", method = RequestMethod.PUT)
-    public ResponseEntity<newsType> updateNewsType(@RequestBody newsType newsType,
+    @RequestMapping(value = "/update_news_type/{typeName}", method = RequestMethod.PUT)
+    public ResponseEntity<NewsType> updateNewsType(@RequestBody NewsType newsType,
                                                    @PathVariable("typeName") String typeName) {
-        int status = service.update(newsType, typeName);
-        if (status == 1) {
+        NewsType newsTypeUpdate = service.update(newsType, typeName);
+        if (newsTypeUpdate != null) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
 
-    @GetMapping("/allTypeString")
+    @GetMapping("/all_name_news_type")
     public ResponseEntity<List<String>> getAllNewsType(){
         List<String> list = service.findAllTypeNews();
         return new ResponseEntity<>(list, HttpStatus.OK);
