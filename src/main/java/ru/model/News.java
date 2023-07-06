@@ -3,6 +3,7 @@ package ru.model;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Data
+@NoArgsConstructor
 public class News {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,4 +27,12 @@ public class News {
     private String fullDescription;
 
     private String type;
+
+    public News(String name, String shortDescription, String fullDescription, String type) {
+        this.name = name;
+        this.shortDescription = shortDescription;
+        this.fullDescription = fullDescription;
+        this.type = type;
+    }
+
 }

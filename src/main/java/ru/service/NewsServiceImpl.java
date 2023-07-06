@@ -13,23 +13,26 @@ import java.util.stream.Collectors;
 @Service
 public class NewsServiceImpl implements NewsService {
     NewsRepoImpl newsRepo;
-    NewsTypeRepo newsTypeRepo;
-
 
     @Autowired
-    public NewsServiceImpl(NewsRepoImpl newsRepo, NewsTypeRepo newsTypeRepo) {
+    public NewsServiceImpl(NewsRepoImpl newsRepo) {
         this.newsRepo = newsRepo;
-        this.newsTypeRepo = newsTypeRepo;
     }
 
     @Override
     public List<NewsDTO> findAll() {
-        return newsRepo.findAll().stream().map(NewsDTO::new).collect(Collectors.toList());
+        return newsRepo.findAll()
+                .stream()
+                .map(NewsDTO::new)
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<NewsDTO> getAllNewsByType(String typeName) {
-        return newsRepo.findNewsByType(typeName).stream().map(NewsDTO::new).collect(Collectors.toList());
+        return newsRepo.findNewsByType(typeName)
+                .stream()
+                .map(NewsDTO::new)
+                .collect(Collectors.toList());
     }
 
     @Override

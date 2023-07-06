@@ -17,4 +17,12 @@ public class NewsType {
     private String typeName;
     @Column(name = "color_type")
     private String colorType;
+
+    public NewsType() {
+    }
+
+    public NewsType(String typeName, String colorType) {
+        this.typeName = typeName;
+        this.colorType = colorType;
+    }
 }

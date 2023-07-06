@@ -22,8 +22,7 @@ public class NewsTypeServiceImpl implements NewsTypeService {
 
     @Override
     public NewsType save(NewsType newsType) {
-        NewsType newsTypeNew = newsTypeRepo.save(newsType);
-        return newsTypeNew;
+        return newsTypeRepo.save(newsType);
     }
 
     @Override
