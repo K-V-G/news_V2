@@ -1,0 +1,21 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="kirill_govorin" id="5">
+        <sql endDelimiter=";">
+            INSERT INTO news(name, short_descr, full_descr, type) VALUES
+                ('Название 1', 'Короткое описание 1', 'Длинное описание 1', 'Хоррошая новость'),
+                ('Название 2', 'Короткое описание 2', 'Длинное описание 2', 'Хоррошая новость'),
+                ('Название 3', 'Короткое описание 3', 'Длинное описание 3', 'Очень хорошая новость'),
+                ('Название 4', 'Короткое описание 4', 'Длинное описание 4', 'Очень хорошая новость'),
+                ('Название 5', 'Короткое описание 5', 'Длинное описание 5', 'Плохая новость'),
+                ('Название 6', 'Короткое описание 6', 'Длинное описание 6', 'Плохая новость'),
+                ('Название 7', 'Короткое описание 7', 'Длинное описание 7', 'Очень плохая новость'),
+                ('Название 8', 'Короткое описание 8', 'Длинное описание 8', 'Очень плохая новость');
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

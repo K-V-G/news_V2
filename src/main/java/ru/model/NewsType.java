@@ -2,15 +2,17 @@ package ru.model;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "newstype_v2")
+@Table(name = "newstype")
 @Getter
 @Setter
 @Data
+@NoArgsConstructor
 public class NewsType {
     @Id
     @Column(name = "type_name")
@@ -18,8 +20,6 @@ public class NewsType {
     @Column(name = "color_type")
     private String colorType;
 
-    public NewsType() {
-    }
 
     public NewsType(String typeName, String colorType) {
         this.typeName = typeName;

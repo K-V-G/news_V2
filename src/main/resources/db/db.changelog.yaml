@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      file: db/v1/changelog/sql/create_table_type_news.sql
+  - include:
+      file: db/v1/changelog/sql/insert_table_type_news.xml
+  - include:
+      file: db/v1/changelog/sql/create_table_news.xml
+  - include:
+      file: db/v1/changelog/sql/delete_foreign_key_table_news.xml
+  - include:
+      file: db/v1/changelog/sql/move_foreign_key_table_news.xml
+  - include:
+      file: db/v1/changelog/sql/insert_table_news.xml
